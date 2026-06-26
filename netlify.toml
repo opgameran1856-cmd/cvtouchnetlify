@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Pin the Nitro build target so the SSR server deploys as a Netlify Function.
+  NITRO_PRESET = "netlify"
+
+# Nitro's Netlify preset emits server functions to .netlify/functions-internal
+# and auto-generates _redirects so all routes hit the SSR handler.
+[functions]
+  directory = ".netlify/functions-internal"
